@@ -126,10 +126,11 @@ class ClothsScreen extends Component {
 
     const rows = this.state.DISHES.map((value, index) => {
       return ( 
-        <Button style={{width:350,height:300, margin:30, justifyContent:'center', alignContent:'center', borderWidth:3,borderColor:'black'}}>
+        <Button style={{width:350,height:300, margin:30, justifyContent:'center', alignContent:'center', borderWidth:3,borderColor:'black'}}
+        >
           <ImageBackground style={{width:350,height:300, justifyContent:'center', alignContent:'center'}} resizeMode='cover' source={value.img}>
           </ImageBackground>
-            <Text s>{value.title}</Text>
+            <Text>{value.title}</Text>
         </Button>
       )
     })
@@ -141,7 +142,17 @@ class ClothsScreen extends Component {
             <Icon style={{ fontSize: 50 }} name="arrow-round-back"
             onPress={()=>this.props.navigation.navigate('HomeScreen')}/> 
         </Left>
+        <Body style={{flex:2}}>
+          <Text style={{fontSize:20}}>
+            Men UnStitched Cloths
+          </Text>
+        </Body>
         <Right style={{flex:1}}>
+          <Button transparent>
+            <Text>
+              Filter
+            </Text>
+          </Button>
         </Right>
       </Header>
       <Content style={{flex:1,backgroundColor:'#F5F5F5'}}>
@@ -160,11 +171,13 @@ class ClothsScreen extends Component {
         <FlatList
           data={this.state.DISHES}
           renderItem={({ item }) => (
-            <View style={{ flex: 1, flexDirection: 'column', margin: 5, justifyContent:'center' }}>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('DetailScreen')} style={{ flex: 1, flexDirection: 'column', margin: 5, justifyContent:'center' }}>  
+
               <Image style={styles.imageThumbnail} source={item.img} />
               <Text style={{  alignContent:'center', fontSize:25}}>{item.title}</Text>
               <Text style={{  alignContent:'center', fontSize:15}}>Rs {item.price}</Text>
-            </View>
+            
+            </TouchableOpacity> 
           )}
           //Setting the number of column
           numColumns={2}
