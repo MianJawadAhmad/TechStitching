@@ -5,7 +5,7 @@ import { ScrollView,  KeyboardAvoidingView,ImageBackground,
   ActivityIndicator,
   Image,
   TouchableOpacity } from 'react-native'
-import {Header,Left,Body,Right,Container,Content,Footer, Text,Button} from 'native-base'
+import {Header,Left,Body,Right,Container,Content,Footer, Text,Button, Icon} from 'native-base'
 import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -18,48 +18,48 @@ const summer = [
   {
       id: 1,
       title: 'Gul Ahmad',
-      img: require('../Images/men1.png'),
+      img: require('../Images/menn1.png'),
       price: 350
   },
   {
     id: 1,
     title: 'Alkaram',
-    img: require('../Images/men2.png'),
+    img: require('../Images/menn2.png'),
     price: 350
 },
 {
   id: 1,
   title: 'Grace',
-  img: require('../Images/men1.png'),
+  img: require('../Images/menn7.png'),
   price: 350
 },
 {
 id: 1,
 title: 'Local',
-img: require('../Images/men2.png'),
+img: require('../Images/menn4.png'),
 price: 350
 },
 {
   id: 1,
-  title: 'UnStitched Cloths',
-  img: require('../Images/men1.png'),
+  title: 'Grace',
+  img: require('../Images/menn5.png'),
   price: 350
 },
 {
 id: 1,
-title: 'Stitched Cloths',
-img: require('../Images/men2.png'),
+title: 'Gul Ahmad',
+img: require('../Images/menn6.png'),
 price: 350
 },  {
   id: 1,
-  title: 'UnStitched Cloths',
-  img: require('../Images/men1.png'),
+  title: 'Alkaram',
+  img: require('../Images/menn7.png'),
   price: 350
 },
 {
 id: 1,
-title: 'Stitched Cloths',
-img: require('../Images/men2.png'),
+title: 'Grace',
+img: require('../Images/menn2.png'),
 price: 350
 }
 ]
@@ -137,28 +137,33 @@ class ClothsScreen extends Component {
     return (
       <Container>
       <Header>
-        <Left style={{flex:1}}>
-          <Button full style={{flex:1,borderWidth:2,backgroundColor:this.state.buttonColorm, borderColor:'black',justifyContent:'center'}}
+        <Left style={{flex:1}}>         
+            <Icon style={{ fontSize: 50 }} name="arrow-round-back"
+            onPress={()=>this.props.navigation.navigate('HomeScreen')}/> 
+        </Left>
+        <Right style={{flex:1}}>
+        </Right>
+      </Header>
+      <Content style={{flex:1,backgroundColor:'#F5F5F5'}}>
+        <View style={{flexDirection:'row',backgroundColor:'#F5F5F5',margin:10}}>
+        <Button full style={{flex:1,borderWidth:2,backgroundColor:this.state.buttonColorm, borderColor:'black',justifyContent:'center'}}
           onPress={this.summer}>
             <Text style={{color:this.state.textColorm}}>Summer</Text>
           </Button>
-        </Left>
-        <Right style={{flex:1}}>
           <Button full style={{flex:1,backgroundColor:this.state.buttonColorw, borderWidth:2, borderColor:'black',justifyContent:'center'}}
           onPress={this.winter}>
             <Text style={{color:this.state.textColorw}}>Winter</Text>
           </Button>
-        </Right>
-      </Header>
-      <Content style={{flex:1}}>
+
+        </View>
          <View style={styles.MainContainer}>
         <FlatList
           data={this.state.DISHES}
           renderItem={({ item }) => (
             <View style={{ flex: 1, flexDirection: 'column', margin: 5, justifyContent:'center' }}>
               <Image style={styles.imageThumbnail} source={item.img} />
-              <Text style={{  alignContent:'center', fontSize:30}}>{item.title}</Text>
-              <Text style={{  alignContent:'center', fontSize:20}}>{item.price}</Text>
+              <Text style={{  alignContent:'center', fontSize:25}}>{item.title}</Text>
+              <Text style={{  alignContent:'center', fontSize:15}}>Rs {item.price}</Text>
             </View>
           )}
           //Setting the number of column

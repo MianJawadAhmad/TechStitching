@@ -12,5 +12,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 100,
+    width:150,
+    margin:5
   },
 })

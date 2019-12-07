@@ -61,7 +61,8 @@ class HomeScreen extends Component {
 
     const rows = this.state.DISHES.map((value, index) => {
       return ( 
-        <Button style={{width:350,height:300, margin:30, justifyContent:'center', alignContent:'center', borderWidth:3,borderColor:'black'}}>
+        <Button style={{width:350,height:300, margin:30, justifyContent:'center', alignContent:'center', borderWidth:3,borderColor:'black'}}
+        onPress={()=>this.props.navigation.navigate('ClothsScreen')}>
           <ImageBackground style={{width:350,height:300, justifyContent:'center', alignContent:'center'}} resizeMode='cover' source={value.img}>
             <Text style={{color:'black',fontSize:30,marginLeft:50,marginRight:50, backgroundColor:'blue'}}>{value.title}</Text>
           </ImageBackground>
