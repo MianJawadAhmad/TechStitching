@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
+import { ScrollView,  KeyboardAvoidingView,ImageBackground,
+  View,
+  FlatList,
+  ActivityIndicator,
+  Image,
+  TouchableOpacity } from 'react-native'
+import {Header,Left,Body,Right,Container,Content,Footer, Text,Button} from 'native-base'
 import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -7,16 +13,178 @@ import { connect } from 'react-redux'
 // Styles
 import styles from './Styles/ClothsScreenStyle'
 
+
+const summer = [  
+  {
+      id: 1,
+      title: 'Gul Ahmad',
+      img: require('../Images/men1.png'),
+      price: 350
+  },
+  {
+    id: 1,
+    title: 'Alkaram',
+    img: require('../Images/men2.png'),
+    price: 350
+},
+{
+  id: 1,
+  title: 'Grace',
+  img: require('../Images/men1.png'),
+  price: 350
+},
+{
+id: 1,
+title: 'Local',
+img: require('../Images/men2.png'),
+price: 350
+},
+{
+  id: 1,
+  title: 'UnStitched Cloths',
+  img: require('../Images/men1.png'),
+  price: 350
+},
+{
+id: 1,
+title: 'Stitched Cloths',
+img: require('../Images/men2.png'),
+price: 350
+},  {
+  id: 1,
+  title: 'UnStitched Cloths',
+  img: require('../Images/men1.png'),
+  price: 350
+},
+{
+id: 1,
+title: 'Stitched Cloths',
+img: require('../Images/men2.png'),
+price: 350
+}
+]
+
+
+const winter = [ 
+  {
+      id: 1,
+      title: 'UnStitched Cloths',
+      img: require('../Images/winter1.png'),
+      price: 350
+  },
+  {
+    id: 1,
+    title: 'Stitched Cloths',
+    img: require('../Images/men2.png'),
+    price: 350
+},
+{
+  id: 1,
+  title: 'UnStitched Cloths',
+  img: require('../Images/winter1.png'),
+  price: 350
+},
+{
+id: 1,
+title: 'Stitched Cloths',
+img: require('../Images/men2.png'),
+price: 350
+},
+{
+  id: 1,
+  title: 'UnStitched Cloths',
+  img: require('../Images/winter1.png'),
+  price: 350
+},
+{
+id: 1,
+title: 'Stitched Cloths',
+img: require('../Images/men2.png'),
+price: 350
+}
+]
+
+
 class ClothsScreen extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      buttonColorm:'black',
+      textColorm:'white',
+      buttonColorw:'white',
+      textColorw:'black',
+      DISHES: summer,
+
+    }
+  }
+
+
   render () {
+
+
+
+    const rows = this.state.DISHES.map((value, index) => {
+      return ( 
+        <Button style={{width:350,height:300, margin:30, justifyContent:'center', alignContent:'center', borderWidth:3,borderColor:'black'}}>
+          <ImageBackground style={{width:350,height:300, justifyContent:'center', alignContent:'center'}} resizeMode='cover' source={value.img}>
+          </ImageBackground>
+            <Text s>{value.title}</Text>
+        </Button>
+      )
+    })
+
     return (
-      <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-          <Text>ClothsScreen</Text>
-        </KeyboardAvoidingView>
-      </ScrollView>
+      <Container>
+      <Header>
+        <Left style={{flex:1}}>
+          <Button full style={{flex:1,borderWidth:2,backgroundColor:this.state.buttonColorm, borderColor:'black',justifyContent:'center'}}
+          onPress={this.summer}>
+            <Text style={{color:this.state.textColorm}}>Summer</Text>
+          </Button>
+        </Left>
+        <Right style={{flex:1}}>
+          <Button full style={{flex:1,backgroundColor:this.state.buttonColorw, borderWidth:2, borderColor:'black',justifyContent:'center'}}
+          onPress={this.winter}>
+            <Text style={{color:this.state.textColorw}}>Winter</Text>
+          </Button>
+        </Right>
+      </Header>
+      <Content style={{flex:1}}>
+         <View style={styles.MainContainer}>
+        <FlatList
+          data={this.state.DISHES}
+          renderItem={({ item }) => (
+            <View style={{ flex: 1, flexDirection: 'column', margin: 5, justifyContent:'center' }}>
+              <Image style={styles.imageThumbnail} source={item.img} />
+              <Text style={{  alignContent:'center', fontSize:30}}>{item.title}</Text>
+              <Text style={{  alignContent:'center', fontSize:20}}>{item.price}</Text>
+            </View>
+          )}
+          //Setting the number of column
+          numColumns={2}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
+      </Content>
+    </Container>
     )
   }
+
+  winter = () =>{
+    if(this.state.buttonColorw === 'white'){
+      this.setState({buttonColorm:'white', textColorm:'black',buttonColorw:'black', textColorw:'white', DISHES:winter})
+     }//else{
+    //   this.setState({buttonColorm:'black', textColorm:'white',buttonColorw:'white', textColorw:'black'})
+    // }
+  }
+
+  summer = () =>{
+    if(this.state.buttonColorm === 'white'){
+      this.setState({buttonColorm:'black', textColorm:'white',buttonColorw:'white', textColorw:'black',DISHES :summer})
+     }
+  }
+
 }
 
 const mapStateToProps = (state) => {
