@@ -14,7 +14,7 @@ const DISHESmen = [
     
   {
       id: 1,
-      title: 'UnStitched Cloths',
+      title: 'UnStitched ',
       img: require('../Images/men1.png')
   },
   {
@@ -64,7 +64,7 @@ class HomeScreen extends Component {
         <Button style={{width:350,height:300, margin:30, justifyContent:'center', alignContent:'center', borderWidth:3,borderColor:'black'}}
         onPress={()=>this.props.navigation.navigate('ClothsScreen')}>
           <ImageBackground style={{width:350,height:300, justifyContent:'center', alignContent:'center'}} resizeMode='cover' source={value.img}>
-            <Text style={{color:'black',fontSize:30,marginLeft:50,marginRight:50, backgroundColor:'blue'}}>{value.title}</Text>
+            <Text style={{color:'black',fontSize:30,marginLeft:50,marginRight:50, fontWeight:'bold'}}>{value.title}</Text>
           </ImageBackground>
         </Button>
       )

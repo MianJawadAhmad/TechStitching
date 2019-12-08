@@ -30,7 +30,8 @@ class ChoseMeasurementScreen extends Component {
               </Button>
             </View>
             <View style={{margin:30}}>
-              <Button large dark style={{justifyContent:'center',height:200}}>
+              <Button large dark style={{justifyContent:'center',height:200}}
+              onPress={()=>this.props.navigation.navigate('FormScreen')}>
               <Text>Form</Text>
               </Button>
             </View>
