@@ -123,18 +123,6 @@ class ClothsScreen extends Component {
   render () {
 
 
-
-    const rows = this.state.DISHES.map((value, index) => {
-      return ( 
-        <Button style={{width:350,height:300, margin:30, justifyContent:'center', alignContent:'center', borderWidth:3,borderColor:'black'}}
-        >
-          <ImageBackground style={{width:350,height:300, justifyContent:'center', alignContent:'center'}} resizeMode='cover' source={value.img}>
-          </ImageBackground>
-            <Text>{value.title}</Text>
-        </Button>
-      )
-    })
-
     return (
       <Container>
       <Header>
