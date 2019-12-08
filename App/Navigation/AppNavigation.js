@@ -1,4 +1,9 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
+import OrdersuccesScreen from '../Containers/OrdersuccesScreen'
+import LogInScreen from '../Containers/LogInScreen'
+import OrderScreen from '../Containers/OrderScreen'
+import ArScreen from '../Containers/ArScreen'
+import ChoseMeasurementScreen from '../Containers/ChoseMeasurementScreen'
 import DetailScreen from '../Containers/DetailScreen'
 import FilterScreen from '../Containers/FilterScreen'
 import ClothsScreen from '../Containers/ClothsScreen'
@@ -10,6 +15,11 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
+  OrdersuccesScreen: { screen: OrdersuccesScreen },
+  LogInScreen: { screen: LogInScreen },
+  OrderScreen: { screen: OrderScreen },
+  ArScreen: { screen: ArScreen },
+  ChoseMeasurementScreen: { screen: ChoseMeasurementScreen },
   DetailScreen: { screen: DetailScreen },
   FilterScreen: { screen: FilterScreen },
   ClothsScreen: { screen: ClothsScreen },
@@ -19,7 +29,7 @@ const PrimaryNav = createStackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'DetailScreen',
+  initialRouteName: 'SplashScreen',
   navigationOptions: {
     headerStyle: styles.header
   }

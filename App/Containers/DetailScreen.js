@@ -49,7 +49,8 @@ class DetailScreen extends Component {
               <Text style={{color:'white'}}>+</Text>
             </Button>
           </View>
-          <Button style={{justifyContent:'center', marginTop:30, backgroundColor:'black'}}>
+          <Button style={{justifyContent:'center', marginTop:30, backgroundColor:'black'}}
+          onPress={()=>this.props.navigation.navigate('ChoseMeasurementScreen')}>
             <Text style={{fontSize:20, fontWeight:'bold'}}>
               Add for Measurement
             </Text>
